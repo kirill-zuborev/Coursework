@@ -1,0 +1,17 @@
+﻿@model Skeleton.Presentation.Models.AccountViewModels.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Enter your credentials, please</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <label>Enter a login</label>
+    @Html.TextBoxFor(m => m.UserName)
+   
+    
+}

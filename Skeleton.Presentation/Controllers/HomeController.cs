@@ -84,7 +84,7 @@ namespace Skeleton.Presentation.Controllers
             subgoal.Name = name; 
             return _repo.AddSubgoal(subgoal); 
         }
-        public int AddFolder(string name,int userId = 1)
+        public int AddFolder(string name,int userId)
         {
             Domain.Entities.Folder folder = new Domain.Entities.Folder();
             folder.Name = name;
@@ -99,7 +99,7 @@ namespace Skeleton.Presentation.Controllers
              
             return _repo.AddGoal(goal);
         }
-        public JsonResult GetAllFoldersByUserId(int userId = 1)
+        public JsonResult GetAllFoldersByUserId(int userId)
         {
             return Json(_repo.GetAllFolder(userId), JsonRequestBehavior.AllowGet);
         }

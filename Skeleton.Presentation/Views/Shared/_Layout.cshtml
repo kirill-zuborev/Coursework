@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -9,7 +11,18 @@
     <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
-    <div style="position:absolute;top:0;bottom:0;right:0;left:0;">
+    
+    <div style="position:absolute;top:0;height: 50px;right:0;left:0;background-color: black;">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home page", "Index", "Home")</li>
+                <li>@Html.ActionLink("Registration", "Index", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="position: absolute; top: 50px; bottom: 0; right: 0; left: 0;">
         @RenderBody() 
     </div>
 
