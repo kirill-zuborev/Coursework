@@ -11,7 +11,7 @@ namespace Skeleton.Presentation.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IRepository _repo;
+		private readonly IRepository _repo; 
 
 		public HomeController(IRepository repo)
 		{
