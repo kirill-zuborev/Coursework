@@ -15,6 +15,7 @@ namespace Skeleton.Presentation.Controllers
 
 		public HomeController(IRepository repo)
 		{
+             
 			if (repo == null)
 			{
 				throw new ArgumentNullException("repo");
@@ -83,10 +84,11 @@ namespace Skeleton.Presentation.Controllers
             subgoal.Name = name; 
             return _repo.AddSubgoal(subgoal); 
         }
-        public int AddFolder(string name)
+        public int AddFolder(string name,int userId = 1)
         {
             Domain.Entities.Folder folder = new Domain.Entities.Folder();
             folder.Name = name;
+            folder.UserId = userId;
             return _repo.AddFolder(folder);
         }
         public int AddGoal(string name, int folderId)
@@ -97,9 +99,9 @@ namespace Skeleton.Presentation.Controllers
              
             return _repo.AddGoal(goal);
         }
-        public JsonResult GetAllFolders()
+        public JsonResult GetAllFoldersByUserId(int userId = 1)
         {
-            return Json(_repo.GetAllFolder(), JsonRequestBehavior.AllowGet);
+            return Json(_repo.GetAllFolder(userId), JsonRequestBehavior.AllowGet);
         }
 	}
 }

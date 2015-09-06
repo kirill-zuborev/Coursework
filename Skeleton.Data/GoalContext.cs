@@ -14,5 +14,7 @@ namespace Skeleton.Data
         public DbSet<Model.Goal> Goals { get; set; }
         public DbSet<Model.Subgoal> Subgoals { get; set; }
         public DbSet<Model.Folder> Folders { get; set; }
+
+        public DbSet<Model.User> Users { get; set; }
     } 
 }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Skeleton.Domain.Entities
+namespace Skeleton.Data.Model
 {
-    public class Folder
+    public class User
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Login { get; set; }
 
-        public int UserId { get; set; }
+        public virtual List<Folder> Folders { get; set; }
     }
 }

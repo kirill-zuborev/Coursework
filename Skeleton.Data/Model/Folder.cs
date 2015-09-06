@@ -12,5 +12,8 @@ namespace Skeleton.Data.Model
         public string Name { get; set; }
 
         public virtual List<Goal> Goals { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

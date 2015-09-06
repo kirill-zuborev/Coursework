@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace Skeleton.Presentation
 {
@@ -17,6 +18,7 @@ namespace Skeleton.Presentation
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			IoCConfig.RegisterDependencies();
+            WebSecurity.InitializeDatabaseConnection("GoalContext", "Users", "Id", "Login", true);
 		}
 	}
 }

@@ -141,7 +141,7 @@ namespace Skeleton.Data
         }
 
 
-        public IEnumerable<Domain.Entities.Folder> GetAllFolder()
+        public IEnumerable<Domain.Entities.Folder> GetAllFolder(int userId)
         {
             List<Domain.Entities.Folder> foldersResult = new List<Domain.Entities.Folder>();
             List<Folder> folders = new List<Folder>();
@@ -204,7 +204,8 @@ namespace Skeleton.Data
         public int AddFolder(Domain.Entities.Folder folder)
         {
             Folder f = new Folder();
-            f.Name = folder.Name; 
+            f.Name = folder.Name;
+            f.UserId = folder.UserId;
              
             using (GoalContext context = new GoalContext())
             {
