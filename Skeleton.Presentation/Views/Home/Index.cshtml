@@ -2,8 +2,9 @@
 @{
     ViewBag.Title = "Home Page";
 }  
-
-<link href="~/Content/index.css" rel="stylesheet" />
+@if (User.Identity.IsAuthenticated)
+{
+    <link href="~/Content/index.css" rel="stylesheet" />
  <div class="popup-add-folder hidden">
      <span>
          Create new folder
@@ -94,6 +95,8 @@
         </div>
     </div>
 </div>
+}
+
 
 
 <script src="~/Scripts/bootstrap-datepicker.js"></script>

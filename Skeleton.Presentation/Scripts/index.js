@@ -3,8 +3,7 @@
     $.ajax({
         type: "GET",
         url: 'Home/GetAllFoldersByUserId',
-        dataType: "json",
-        data: {userId: 1},
+        dataType: "json", 
         success: function (data) {
             var nodeFoldersList = $('.folders__list'); 
             $.each(data, function (index, value) {
@@ -45,7 +44,7 @@
                 type: "GET",
                 url: 'Home/AddFolder',
                 dataType: "json",
-                data: { name: folderNamed, userId: 1 },
+                data: { name: folderName},
                 success: function (data) {
                     nodeFolderList = $('.folders__list');
                     addFolderToFoldersList({ Id: data, Name: folderName }, nodeFolderList);

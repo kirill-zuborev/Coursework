@@ -1,17 +1,26 @@
-﻿@model Skeleton.Presentation.Models.AccountViewModels.Login
+﻿@model Skeleton.Presentation.Models.AccountViewModels.LoginViewModel
 
 @{
     ViewBag.Title = "Login";
 }
 
-<h2>Enter your credentials, please</h2>
+<div class="col-lg-offset-1 col-lg-5">
 
-@using (@Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-    <label>Enter a login</label>
-    @Html.TextBoxFor(m => m.UserName)
-   
-    
-}
+    <h2>Enter your credentials, please</h2>
+
+    @using (@Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        @Html.LabelFor(m => m.UserName, new { @class = "control-lbel" })
+        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Password, new { @class = "control-lbel" })
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
+

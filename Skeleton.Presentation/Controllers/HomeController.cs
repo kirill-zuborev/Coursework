@@ -6,16 +6,22 @@ using System.Web.Mvc;
 using Skeleton.Domain;
 using Skeleton.Presentation.Models.HomeViewModels;
 using Newtonsoft.Json;
+using WebMatrix.WebData;
 
 namespace Skeleton.Presentation.Controllers
 {
 	public class HomeController : Controller
-	{
-		private readonly IRepository _repo; 
+    {
+        #region Private Fields
 
-		public HomeController(IRepository repo)
+        private readonly IRepository _repo;
+
+        #endregion
+
+        #region Constructors
+
+        public HomeController(IRepository repo)
 		{
-             
 			if (repo == null)
 			{
 				throw new ArgumentNullException("repo");
@@ -23,10 +29,18 @@ namespace Skeleton.Presentation.Controllers
 			_repo = repo;
 		}
 
-		public ActionResult Index()
+        #endregion
+
+        #region Action metods
+
+        public ActionResult Index()
         {
 			return View();
 		}
+
+        #endregion
+
+        #region Public metods
 
         public JsonResult SearchGoalsByName(string substring)
         {
@@ -37,14 +51,17 @@ namespace Skeleton.Presentation.Controllers
         {
             return Json(_repo.GetGoalsByFolderId(folderId), JsonRequestBehavior.AllowGet);
         } 
+
         public void DeleteSubgoal(int subgoalId)
 		{
             _repo.DeleteSubgoal(subgoalId); 
 		}
+
         public void ChangeDescriptionInGoal(int goalId, string description)
         {
             _repo.ChangeDescriptionInGoal(goalId, description);
         }
+
         public void ChangeDateInGoal(int goalId, string date)
         {
             DateTime goalDate;
@@ -53,30 +70,37 @@ namespace Skeleton.Presentation.Controllers
                 _repo.ChangeDueDateInGoal(goalId, goalDate);
             }  
         }
+
         public void ChangeIsDoneInGoal(int goalId)
         {
             _repo.ChangeIsDoneInGoal(goalId);
         }
+
         public void DeleteFolder(int folderId)
         {
             _repo.DeleteFolder(folderId);
         } 
+
         public void DeleteGoal(int goalId)
         {
             _repo.DeleteGoal(goalId);
         } 
+
         public JsonResult GetSubgoalsByGoalId(int goalId)
         {
             return Json(_repo.GetSubgoalsByGoalId(goalId), JsonRequestBehavior.AllowGet);
         }
+
         public void ChangeIsDoneInSubgoal(int subgoalId)
         {
             _repo.ChangeIsDoneInSubgoal(subgoalId);
         }
+
         public void ChangeIsStarredInGoal(int goalId)
         {
             _repo.ChangeIsStarredInGoal(goalId);
         }
+
         public int AddSubgoal(int goalId, string name)
         {
             Domain.Entities.Subgoal subgoal = new Domain.Entities.Subgoal();
@@ -84,13 +108,15 @@ namespace Skeleton.Presentation.Controllers
             subgoal.Name = name; 
             return _repo.AddSubgoal(subgoal); 
         }
-        public int AddFolder(string name,int userId)
+
+        public int AddFolder(string name)
         {
             Domain.Entities.Folder folder = new Domain.Entities.Folder();
             folder.Name = name;
-            folder.UserId = userId;
+            folder.UserId = WebSecurity.CurrentUserId;
             return _repo.AddFolder(folder);
         }
+
         public int AddGoal(string name, int folderId)
         {
             Domain.Entities.Goal goal = new Domain.Entities.Goal();
@@ -99,9 +125,13 @@ namespace Skeleton.Presentation.Controllers
              
             return _repo.AddGoal(goal);
         }
-        public JsonResult GetAllFoldersByUserId(int userId)
+
+        [Authorize]
+        public JsonResult GetAllFoldersByUserId()
         {
-            return Json(_repo.GetAllFolder(userId), JsonRequestBehavior.AllowGet);
+            return Json(_repo.GetAllFolder(WebSecurity.CurrentUserId), JsonRequestBehavior.AllowGet);
         }
-	}
+
+        #endregion
+    }
 }

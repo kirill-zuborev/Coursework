@@ -16,8 +16,21 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home page", "Index", "Home")</li>
-                <li>@Html.ActionLink("Registration", "Index", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                <li>@Html.ActionLink("Registration", "Registration", "Account")</li>
+                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <div style="height: 50px; padding-top: 15px; padding-bottom: 15px;">
+                            <strong style="color:white; ">@String.Format("Welcome, {0}", @User.Identity.Name)</strong>
+                        </div>
+                    </li>
+                    <li>@Html.ActionLink("LogOut", "LogOut", "Account")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                }
             </ul>
         </div>
     </div>

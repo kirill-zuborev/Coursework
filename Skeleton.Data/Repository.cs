@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 namespace Skeleton.Data
 {
 	public class Repository : IRepository
-	{ 
+    {
+        #region IRepository members
+
         public int AddGoal(Domain.Entities.Goal goal)
         {
             Goal g = new Goal();
@@ -63,7 +65,6 @@ namespace Skeleton.Data
             return goalsResult;
         }
 
-
         public IEnumerable<Domain.Entities.Subgoal> GetSubgoalsByGoalId(int goalId)
         {
             List<Domain.Entities.Subgoal> subgoalsResult = new List<Domain.Entities.Subgoal>();
@@ -85,7 +86,6 @@ namespace Skeleton.Data
             return subgoalsResult;
         }
 
-
         public void DeleteSubgoal(int subgoalId)
         {
             using (GoalContext context = new GoalContext())
@@ -98,7 +98,6 @@ namespace Skeleton.Data
                 } 
             }
         }
-
 
         public void ChangeIsDoneInGoal(int goalId)
         {
@@ -126,7 +125,6 @@ namespace Skeleton.Data
             }
         }
 
-
         public void ChangeDueDateInGoal(int goalId, DateTime date)
         {
             using (GoalContext context = new GoalContext())
@@ -140,21 +138,21 @@ namespace Skeleton.Data
             }
         }
 
-
         public IEnumerable<Domain.Entities.Folder> GetAllFolder(int userId)
         {
             List<Domain.Entities.Folder> foldersResult = new List<Domain.Entities.Folder>();
             List<Folder> folders = new List<Folder>();
             using (GoalContext context = new GoalContext())
             {
-                folders = context.Folders.ToList();
+                folders = context.Folders.Where(folder => folder.UserId == userId).ToList();
             }
             foreach (var folder in folders)
             {
                 foldersResult.Add(new Domain.Entities.Folder()
                 {
                     Id = folder.Id,
-                    Name = folder.Name
+                    Name = folder.Name,
+                    UserId = folder.UserId
                 });
             }
             return foldersResult;
@@ -186,7 +184,6 @@ namespace Skeleton.Data
             }
         }
 
-
         public void ChangeIsStarredInGoal(int goalId)
         {
             using (GoalContext context = new GoalContext())
@@ -199,7 +196,6 @@ namespace Skeleton.Data
                 } 
             }
         }
-
 
         public int AddFolder(Domain.Entities.Folder folder)
         {
@@ -214,7 +210,6 @@ namespace Skeleton.Data
             }
             return f.Id;
         }
-
 
         public IEnumerable<Domain.Entities.Goal> SearchGoalsByName(string substring)
         {
@@ -243,7 +238,6 @@ namespace Skeleton.Data
             return result;
         }
 
-
         public void ChangeDescriptionInGoal(int goalId, string description)
         {
             using (GoalContext context = new GoalContext())
@@ -256,5 +250,7 @@ namespace Skeleton.Data
                 }
             }
         }
+
+        #endregion
     }
 }
