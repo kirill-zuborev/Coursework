@@ -1,0 +1,283 @@
+﻿.subgoals {
+    margin: 5px 0;
+    border: 1px solid #AAA;
+    border-radius: 4px;
+    position: relative;     
+}
+
+.subgoals__list{ 
+    position: relative;  
+    max-height:250px;
+    overflow-y:auto;
+}
+li{
+    list-style-type: none;
+    position:relative;
+    border-bottom: 1px solid #AAA;
+}
+ul{
+    margin:0px;
+    padding:0px;
+}
+.subgoal__delete{
+    position:absolute; 
+    top: 10px;
+    right: 5px;
+    left: initial;
+}
+.subgoal__checkbox{
+    position:absolute;
+    top: 10px;
+    left:10px;
+}
+.subgoal__name{
+    padding: 9px 30px 9px 35px;
+    word-wrap: break-word;
+}
+.subgoals__button-add{
+    position:absolute;
+    top: 10px;
+    left:10px;
+}
+.subgoals__add{
+    position: relative;
+}
+.subgoals__edit{
+    padding: 3px 3px 3px 35px;
+
+}
+.subgoal__edit-box{
+    width: 100%;
+    height: 28px;
+    resize: none;
+    line-height: 21px;
+    font-size: 13px;
+    box-shadow: none;
+}
+.datail { 
+    margin: 0;
+    width: 350px;
+    float: right;
+    border-left: 1px solid #AAA; 
+    position: absolute;
+    padding: 10px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.datail_hidden{
+    display:none;
+}
+
+.goals{
+    position:absolute;
+    top:0; 
+    bottom:0;
+    left:230px; 
+    right:350px;  
+}
+.goals_full{
+    right:0;
+}
+.goals__list{
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.folders{
+    position:absolute;
+    width: 230px;
+    border-right: 1px solid #AAA;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+}
+.folders__content{
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color: red;
+}
+
+.goal__date{
+    position:relative; 
+    float:right;
+    top:-25px;
+}
+.goal__checkbox{
+    position:absolute;
+    top: 6px;
+    left:10px;
+}
+.goal__name{
+    position:relative;
+    left:35px;
+    margin-right: 35px; 
+    padding: 6px 125px 6px 0px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.goal{
+    border: 1px solid #AAA;
+    border-radius: 4px;
+    margin: 5px;
+    background-color: #ffffff;
+} 
+.goal_done{
+    display:none;
+}
+.goal__mark{
+    position:relative; 
+    float:right;
+    top:-32px;
+    margin: 0 4px;
+    padding: 3px 0;
+}
+
+.head{
+    position:relative;
+    border: 1px solid #AAA;
+    margin-bottom:5px;
+}
+.head__mark{
+    position:absolute; 
+    top: 0px;
+    padding-top: 5px;
+    right: 5px;
+    left: initial;
+    font-size: 20px;
+}
+.head__checkbox{
+    position:absolute;
+    top: 10px;
+    left:10px;
+}
+.head__name{
+    padding: 9px 30px 9px 35px;
+    word-wrap: break-word;
+
+}
+.datepicker{
+    top:0;
+    left:0; 
+    right:0;
+}
+.datepicker__input{
+    width:100%;
+}
+.goals__input-add{
+    width:100%;
+}
+.goals__add{
+    margin: 5px;
+}
+.folder__name{
+    padding: 9px 15px 9px 10px;
+    word-wrap: break-word;
+}
+.folders__search{ 
+    border-bottom: 1px solid #AAA;
+}
+.folders__input-search{
+    width:100%;
+    border: 0;
+}
+.toolbox{ 
+    position:absolute;
+    margin: 5px;
+    bottom:0;
+    left:0;
+    right:0;
+} 
+.folsders__add{  
+    position:absolute;
+    margin: 5px;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.popup-add-folder{
+    position:absolute;
+    z-index:1000;
+    left:50%;
+    width:200px;
+    margin-left:-100px;
+    top: 50px;
+    padding:5px 5px 120px 5px;
+    border:1px solid #AAA;
+    background-color: #ffffff;
+}
+.popup-add-folder__input-container{
+    position: absolute;
+    margin:5px;
+    bottom: 80px;
+    left: 0px;
+    right: 0px;
+}
+.popup-add-folder__input{
+    width:100%;
+}
+.popup-add-folder__add-button{
+
+}
+.popup-add-folder__button-add-container{
+    position: absolute;
+    margin:5px;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+}
+.popup-add-folder__button-close-container{
+    position: absolute;
+    margin:5px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+.subgoal_done{
+    opacity: 0.5;
+} 
+.folder_selected{
+    background-color:#bddfff;
+}
+.goal_selected{
+    background-color:#bddfff;
+}
+.description{
+    position:relative;
+    border: 1px solid #AAA;
+}
+.description__edit-box{
+    width: 100%;
+    height:150px;
+    border: 0;
+    border-left:1px solid #AAA;
+    resize: none;
+}
+.description__button-add{
+    position:absolute;
+    top: 10px;
+    left:10px;
+}
+.description__add{
+    position: relative;
+}
+.description__edit{
+    padding: 0 0 0 35px;
+} 
+.goal__mark_starred{
+    background-color:red;
+}
+.head__mark_starred{
+    background-color:red;
+}
+.folder__delete{
+    position:absolute; 
+    top: 10px;
+    right: 5px;
+    left: initial;
+}

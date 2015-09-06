@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")  
+    <link href="~/Content/bootstrap.css" rel="stylesheet" /> 
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="position:absolute;top:0;bottom:0;right:0;left:0;">
+        @RenderBody() 
+    </div>
+
+    
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/drop.down.js"></script>
+    <script src="~/Scripts/index.js"></script>
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

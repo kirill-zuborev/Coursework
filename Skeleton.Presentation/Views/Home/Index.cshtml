@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}  
+
+<link href="~/Content/index.css" rel="stylesheet" />
+ <div class="popup-add-folder hidden">
+     <span>
+         Create new folder
+     </span>
+     <div class="popup-add-folder__input-container">
+         <input class="popup-add-folder__input" type="text" value="" placeholder="Name" />
+     </div>
+     <div class="popup-add-folder__button-add-container">
+         <div class="popup-add-folder__add-button btn btn-block btn-default">
+             Add
+         </div>
+     </div>
+     <div class="popup-add-folder__button-close-container">
+         <div class="popup-add-folder__close-button btn btn-block btn-default">
+             Close
+         </div>
+     </div>
+ </div>
+
+<div class='folders'>
+    <div class="folders__search">
+        <input class="folders__input-search" type="text" value="" placeholder="Search" />
+    </div>
+    <ul class="folders__list">
+        
+    </ul>
+    <div class="folsders__add">
+        <div class="folsders__add-button btn btn-block btn-default">
+            Add folder
+        </div>
+    </div>
+</div>
+
+<div class="goals goals_full" style="background-color: #b6ff00;">
+    <div class="goals__add">
+        <input class="goals__input-add" type="text" placeholder="Add goal" />
+    </div>
+    <ul class="goals__list"></ul>
+</div>  
+<link href="~/Content/bootstrap-datepicker3.css" rel="stylesheet" />
+<div class="datail datail_hidden">
+
+    <div class="head">
+        <div class='head__checkbox'>
+            <input type='checkbox' class='head__input-checkbox' />
+        </div>
+        <div class='head__name'>
+            
+        </div>
+        <div class='head__mark'>
+            &#10032;
+        </div> 
+    </div>
+
+    <div class="datepicker">
+        <div style="position:relative;">
+            <input id="dp1" class="datepicker__input span2" type="text" placeholder="Dou Date" value="" />
+        </div> 
+    </div>
+    
+    <div class="subgoals" style="padding-bottom: 0px;">
+        <ul class="subgoals__list">
+
+        </ul>
+        <div class="subgoals__add">
+            <div class="subgoals__button-add">
+                &#10004;
+            </div>
+            <div class="subgoals__edit">
+                <textarea class="subgoal__edit-box" placeholder="Add subgoal"></textarea>
+            </div>
+        </div>
+
+    </div>
+    <div class="description"> 
+        <div class ="description__add">
+            <div class="description__button-add">
+                &#10004;
+            </div>
+        </div>
+        <div class="description__edit">
+            <textarea class="description__edit-box" placeholder="Enter a description"></textarea>
+        </div>
+    </div>
+    <div class="toolbox"> 
+        <div class="toolbox__delete btn btn-block btn-default">
+            Delete
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+
+
