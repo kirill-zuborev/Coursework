@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -50,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\ReaderColumnNames.cs" />
+    <Compile Include="Constants\StorageProcedures.cs" />
+    <Compile Include="Constants\StorageProceduresParameters.cs" />
     <Compile Include="GoalContext.cs" />
     <Compile Include="Migrations\201507251329446_dwa.cs" />
     <Compile Include="Migrations\201507251329446_dwa.Designer.cs">

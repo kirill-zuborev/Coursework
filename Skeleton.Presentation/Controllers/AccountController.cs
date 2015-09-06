@@ -54,7 +54,7 @@ namespace Skeleton.Presentation.Controllers
                     }
                     return RedirectToAction("Index", "Home");
                 }
-                catch(MembershipCreateUserException ex)
+                catch(MembershipCreateUserException)
                 {
                     ModelState.AddModelError("", "Sorry the login lready exists");
                 }

@@ -129,7 +129,7 @@ namespace Skeleton.Presentation.Controllers
         [Authorize]
         public JsonResult GetAllFoldersByUserId()
         {
-            return Json(_repo.GetAllFolder(WebSecurity.CurrentUserId), JsonRequestBehavior.AllowGet);
+            return Json(_repo.GetFoldersByUserId(WebSecurity.CurrentUserId), JsonRequestBehavior.AllowGet);
         }
 
         #endregion
