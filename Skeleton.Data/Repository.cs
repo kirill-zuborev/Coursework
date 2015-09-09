@@ -119,6 +119,16 @@ namespace Skeleton.Data
 
                     connection.Close();
 
+                    var users = GetAllUsers();
+
+                    for (int i = 0; i < folders.Count; i++)
+                    {
+                        if (folders[i].CreatorId != userId)
+	                    {
+                            folders[i].Name = users.Where(user => user.Id == folders[i].CreatorId).First().Login;
+	                    }
+                    }
+
                     return folders;
                 }
             }
@@ -269,6 +279,7 @@ namespace Skeleton.Data
             Folder f = new Folder();
             f.Name = folder.Name;
             f.UserId = folder.UserId;
+            f.CreatorId = folder.CreatorId;
              
             using (GoalContext context = new GoalContext())
             {
@@ -368,7 +379,8 @@ namespace Skeleton.Data
             {
                 Id = (int)reader[ReaderColumnNames.Id],
                 Name = (string)reader[ReaderColumnNames.Name],
-                UserId = (int)reader[ReaderColumnNames.UserId]
+                UserId = (int)reader[ReaderColumnNames.UserId],
+                CreatorId = (int)reader[ReaderColumnNames.CreatorId]
             };
         }
 

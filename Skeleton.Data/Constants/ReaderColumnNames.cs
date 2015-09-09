@@ -27,5 +27,7 @@ namespace Skeleton.Data.Constants
         public static readonly string GoalId = "GoalId";
 
         public static readonly string Login = "Login";
+
+        public static readonly string CreatorId = "CreatorId";
     }
 }

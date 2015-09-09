@@ -13,5 +13,7 @@ namespace Skeleton.Domain.Entities
         public string Name { get; set; }
 
         public int UserId { get; set; }
+
+        public int CreatorId { get; set; }
     }
 }

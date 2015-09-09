@@ -104,16 +104,21 @@ namespace Skeleton.Presentation.Controllers
         public int AddSubgoal(int goalId, string name)
         {
             Domain.Entities.Subgoal subgoal = new Domain.Entities.Subgoal();
+
             subgoal.GoalId = goalId;
             subgoal.Name = name; 
+
             return _repo.AddSubgoal(subgoal); 
         }
 
-        public int AddFolder(string name)
+        public int AddFolder(string name, int userId)
         {
             Domain.Entities.Folder folder = new Domain.Entities.Folder();
+
             folder.Name = name;
-            folder.UserId = WebSecurity.CurrentUserId;
+            folder.UserId = userId;
+            folder.CreatorId = WebSecurity.CurrentUserId;
+
             return _repo.AddFolder(folder);
         }
 
@@ -138,6 +143,12 @@ namespace Skeleton.Presentation.Controllers
             return Json(_repo.GetAllUsers(), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
+        public int GetCurrentUserId()
+        {
+            return WebSecurity.CurrentUserId;
+        }
+
         #endregion
-    }
+    } 
 }

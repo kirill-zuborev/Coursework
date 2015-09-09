@@ -1,5 +1,15 @@
 ﻿$(document).ready(function () {
-      
+    $.ajax({
+        type: "GET",
+        url: 'Home/GetCurrentUserId',
+        dataType: "json",
+        success: function (data) {
+            var folders = $('.popup-add-folder');
+            var d = { UserId: data };
+            folders.data(d);
+        }
+    });
+
     $.ajax({
         type: "GET",
         url: 'Home/GetAllFoldersByUserId',
@@ -37,19 +47,31 @@
             });
         }
     }
-    function addFolder() {
-        var folderName = $.trim($('.popup-add-folder__input').val());
-        if (folderName != '') {
+    function addFolder(event) {
+        var folderData = $(event.target)
+                            .parent()
+                            .data();
+
+        var foldersData = $('.folders__list').children();
+
+        var flag = true;
+
+        $.each(foldersData, function (index, value) {
+            if ($(value).data().UserId == folderData.Id) {
+                flag = false;
+                $('.popup-add-folder').addClass('hidden');
+            }
+        })
+        if (flag) {
             $.ajax({
                 type: "GET",
                 url: 'Home/AddFolder',
                 dataType: "json",
-                data: { name: folderName},
+                data: { name: folderData.Login, userId: folderData.Id },
                 success: function (data) {
                     nodeFolderList = $('.folders__list');
-                    addFolderToFoldersList({ Id: data, Name: folderName }, nodeFolderList);
+                    addFolderToFoldersList({ Id: data, Name: folderData.Login, UserId: folderData.Id }, nodeFolderList);
                     $('.popup-add-folder').addClass('hidden');
-                    $('.popup-add-folder__input').val('');
                 }
             });
         }
@@ -268,9 +290,10 @@
         }
     }
     function addFolderToFoldersList(data, nodeFoldersList) {
+        var to = $('.popup-add-folder').data().UserId == data.UserId ? '+' : '';
         nodeFoldersList.append(
             "<li class='folder'>" +
-                "<div class='folder__name'>" +
+                "<div class='folder__name'>" + to +
                     data.Name +
                 "</div>" +
                 "<div class='folder__delete'>" +
@@ -292,6 +315,7 @@
             "</li>"
             );
         nodeUsersList.children().last().data(data);
+        nodeUsersList.children().children().last().on('click', addFolder)
     }
 
     function deleteGoal() {
