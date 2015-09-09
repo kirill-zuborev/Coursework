@@ -282,7 +282,17 @@
         nodeFoldersList.children().last().children('.folder__name').on('click', selectFolder);
         nodeFoldersList.children().last().children('.folder__delete').on('click', deleteFolder);
     }
-
+    function addUsersToUsersList(data, nodeUsersList)
+    {
+        nodeUsersList.append(
+            "<li class='user'>" +
+                "<div class='user__name btn btn-block '>" +
+                    data.Login +
+                "</div>" +
+            "</li>"
+            );
+        nodeUsersList.children().last().data(data);
+    }
 
     function deleteGoal() {
         goalId = $('.goal_selected').data().Id;
@@ -428,6 +438,19 @@
     $('.subgoals__button-add').on('click', addSubgoal);
     $('.folsders__add-button').on('click', function () {
         $('.popup-add-folder').removeClass('hidden');
+        $.ajax({
+            type: "GET",
+            url: 'Home/GetAllUsers',
+            dataType: "json",
+            success: function (data) {
+                var nodeUsersList = $('.popup-add-folder__list');
+                nodeUsersList.empty();
+                $.each(data, function (index, value) {
+                    addUsersToUsersList(value, nodeUsersList);
+                });
+                //nodeFoldersList.children().first().children('.folder__name').click();
+            }
+        });
     });
     $('.popup-add-folder__close-button').on('click', function () {
         $('.popup-add-folder').addClass('hidden');
@@ -439,8 +462,6 @@
     $('.folders__input-search').keyup(searchGoalsByName);
     $('.description__button-add').on('click', changeDescriptionInGoal);
     $('.head__mark').on('click', changeIsStarredInGoal);
-
-
 }) 
 
 

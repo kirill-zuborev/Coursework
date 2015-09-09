@@ -151,6 +151,28 @@ namespace Skeleton.Data
             return result;
         }
 
+        public IEnumerable<Domain.Entities.User> GetAllUsers()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (IDbCommand command = new SqlCommand("SELECT * FROM dbo.Users", connection))
+                {
+                    List<Domain.Entities.User> folders = new List<Domain.Entities.User>();
+
+                    connection.Open();
+
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        folders = ParseUsers(reader).ToList();
+                    }
+
+                    connection.Close();
+
+                    return folders;
+                }
+            }
+        }
+        
         public void DeleteSubgoal(int subgoalId)
         {
             using (GoalContext context = new GoalContext())
@@ -370,6 +392,27 @@ namespace Skeleton.Data
                 Name = (string)reader[ReaderColumnNames.Name],
                 IsDone = (Boolean)reader[ReaderColumnNames.IsDone],
                 GoalId = (int)reader[ReaderColumnNames.GoalId]
+            };
+        }
+
+        private IEnumerable<Skeleton.Domain.Entities.User> ParseUsers(IDataReader reader)
+        {
+            List<Domain.Entities.User> users = new List<Domain.Entities.User>();
+
+            while (reader.Read())
+            {
+                users.Add(ParseUser(reader));
+            }
+
+            return users;
+        }
+
+        private Domain.Entities.User ParseUser(IDataReader reader)
+        {
+            return new Domain.Entities.User()
+            {
+                Id = (Int32)reader[ReaderColumnNames.Id],
+                Login = (string)reader[ReaderColumnNames.Login]
             };
         }
 

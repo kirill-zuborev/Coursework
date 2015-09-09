@@ -16,8 +16,6 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home page", "Index", "Home")</li>
-                <li>@Html.ActionLink("Registration", "Registration", "Account")</li>
-                
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>
@@ -30,6 +28,7 @@
                 else
                 {
                     <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Registration", "Registration", "Account")</li>
                 }
             </ul>
         </div>

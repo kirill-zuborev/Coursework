@@ -132,6 +132,12 @@ namespace Skeleton.Presentation.Controllers
             return Json(_repo.GetFoldersByUserId(WebSecurity.CurrentUserId), JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
+        public JsonResult GetAllUsers()
+        {
+            return Json(_repo.GetAllUsers(), JsonRequestBehavior.AllowGet);
+        }
+
         #endregion
     }
 }

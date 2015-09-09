@@ -78,6 +78,7 @@
     <Compile Include="Entities\Folder.cs" />
     <Compile Include="Entities\Subgoal.cs" />
     <Compile Include="Entities\Goal.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

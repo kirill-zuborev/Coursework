@@ -211,16 +211,7 @@ ul{
     border:1px solid #AAA;
     background-color: #ffffff;
 }
-.popup-add-folder__input-container{
-    position: absolute;
-    margin:5px;
-    bottom: 80px;
-    left: 0px;
-    right: 0px;
-}
-.popup-add-folder__input{
-    width:100%;
-}
+
 .popup-add-folder__add-button{
 
 }

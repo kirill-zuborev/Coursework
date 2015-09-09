@@ -13,6 +13,7 @@ namespace Skeleton.Domain
         int AddSubgoal(Subgoal subgoal);
         int AddFolder(Folder folder);
 
+        IEnumerable<User> GetAllUsers();
         IEnumerable<Folder> GetFoldersByUserId(int userId);
         IEnumerable<Goal> GetGoalsByFolderId(int folderId);
         IEnumerable<Subgoal> GetSubgoalsByGoalId(int goalId);

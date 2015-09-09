@@ -41,17 +41,13 @@ namespace Skeleton.Presentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registration(RegistrationViewModel registrationModel, string ReturnUrl)
+        public ActionResult Registration(RegistrationViewModel registrationModel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     WebSecurity.CreateUserAndAccount(registrationModel.UserName, registrationModel.Password);
-                    if (ReturnUrl != null)
-                    { 
-                        Redirect(ReturnUrl);
-                    }
                     return RedirectToAction("Index", "Home");
                 }
                 catch(MembershipCreateUserException)
